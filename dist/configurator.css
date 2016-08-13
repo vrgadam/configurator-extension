@@ -1,0 +1,52 @@
+#amp-configurator {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  animation: enter .7s ease-in-out;
+  z-index: 100000;
+}
+
+#amp-configurator .configurator-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 4px solid white;
+  background-color: #ee0088;
+  position: relative;
+  z-index: 1000;
+}
+
+#amp-configurator .configurator-body {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  width: 400px;
+  height: 600px;
+  transform: scale(0);
+  transition: all .15s ease;
+  background: white;
+  border: 1px solid #ebebeb;
+  transform-origin: top left;
+}
+
+#amp-configurator .configurator-body.open {
+  transform: scale(1);
+  transition: all .25s cubic-bezier(0.175, 0.885, 0.32, 1.3);
+}
+
+@keyframes enter {
+  0% {
+    opacity: 0;
+    transform: scale(.5);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
