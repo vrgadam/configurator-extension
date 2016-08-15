@@ -1,8 +1,8 @@
 {
-  "name": "Getting started",
+  "name": "AMP Configurator",
   "version": "0.1",
   "manifest_version": 2,
-  "description": "Injecting stuff",
+  "description": "Manipulate amp-js configurations locally",
   "background": {
     "scripts": [
       "background.js"
@@ -10,8 +10,8 @@
     "persistent": true
   },
   "browser_action": {
-    "default_title": "Inject!",
-    "default_icon": "icon.png"
+    "default_title": "Let's configure!",
+    "default_icon": "configurator-icon.png"
   },
   "permissions": [
     "https://*/*",

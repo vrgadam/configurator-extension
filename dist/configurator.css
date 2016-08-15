@@ -1,32 +1,39 @@
 #amp-configurator {
   position: fixed;
   top: 20px;
-  left: 20px;
+  right: 20px;
   animation: enter .7s ease-in-out;
   z-index: 100000;
 }
 
 #amp-configurator .configurator-icon {
-  width: 50px;
-  height: 50px;
+  width: 64px;
+  height: 64px;
   border-radius: 50%;
-  border: 4px solid white;
-  background-color: #ee0088;
+  background: url('./configurator-icon.png') no-repeat center center;
+  background-size: 100%;
   position: relative;
   z-index: 1000;
+  cursor: pointer;
+  transition: all .2s ease-in-out;
+  transform: scale(1);
+}
+
+#amp-configurator .configurator-icon:hover {
+  transform: scale(1.05);
 }
 
 #amp-configurator .configurator-body {
   position: absolute;
   top: 15px;
-  left: 15px;
+  right: 15px;
   width: 400px;
   height: 600px;
   transform: scale(0);
   transition: all .15s ease;
-  background: white;
+  background: #333;
   border: 1px solid #ebebeb;
-  transform-origin: top left;
+  transform-origin: top right;
 }
 
 #amp-configurator .configurator-body.open {
