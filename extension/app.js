@@ -1,21 +1,31 @@
 console.log('Configurator loader injected');
 
-if (!document.getElementById('configurator-script')) {
-  var head = document.getElementsByTagName('head')[0]
-  var script = document.createElement('script');
-  script.setAttribute('id', 'configurator-script');
-  script.async = true;
-  script.onload = function () {
-    console.log('Remote script loaded');
-  };
-  script.src = '//localhost:9244/configurator.js';
-  head.appendChild(script);
+if (!document.getElementById('amp-configurator')) {
+  var iFrame = document.createElement('iframe');
+  iFrame.src = '//localhost:9244/dist/index.html';
+  iFrame.setAttribute('id', 'amp-configurator');
+  iFrame.style.display = 'none';
+  iFrame.style.position = 'fixed';
+  iFrame.style.top = 0;
+  iFrame.style.right = 0;
+  iFrame.style.height = '100%';
+  iFrame.style.width = '600px';
+  iFrame.style.border = 'none';
 
-  var link = document.createElement('link');
-  link.type = 'text/css';
-  link.rel = 'stylesheet';
-  link.href = '//localhost:9244/dist/configurator.css';
-  head.appendChild(link);
+  var body = document.getElementsByTagName('body')[0];
+  body.appendChild(iFrame);
 }
 
-
+window.ampConfigurator = {
+  getElement: function () {
+    return document.getElementById('amp-configurator');
+  },
+  toggle: function () {
+    var element = this.getElement();
+    if (element.style.display === 'none') {
+      element.style.display = 'block';
+    } else {
+      element.style.display = 'none';
+    }
+  }
+};

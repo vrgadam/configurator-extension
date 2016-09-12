@@ -1,5 +1,5 @@
-const path = require('path');
-var webpack = require('webpack');
+const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   bail: true,
@@ -10,7 +10,9 @@ module.exports = {
     path: './dist/',
     filename: 'configurator.js'
   },
-  plugins: [],
+  plugins: [new HtmlWebpackPlugin({
+    title: 'AMP Configurator'
+  })],
   module: {
     preLoaders: [
       {
@@ -20,18 +22,25 @@ module.exports = {
       }
     ],
     loaders: [
-      {
+       {
         exclude: /node_modules/,
-        test: /main.less$/,
-        loader: 'style!css!less'
-      },
-      {
-        exclude: /node_modules/,
-        test: path.join(__dirname, 'src'),
+        test: /(\.es6$)|(\.js$)/,
         loader: 'babel-loader',
         query: {
           cacheDirectory: true,
           presets: ['es2015', 'stage-0', 'react']
+        }
+      }, {
+        test: /\.css$/,
+        loader: 'style-loader',
+        exclude: /node_modules/
+      }, {
+        test: /\.css$/,
+        loader: 'css-loader',
+        exclude: /node_modules/,        
+        query: {
+          modules: true,
+          localIdentName: '[name]---[local]---[hash:base64:5]'
         }
       }
     ]
